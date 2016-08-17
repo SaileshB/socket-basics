@@ -8,12 +8,22 @@
 
  socket.on('connect', function() {
      console.log('Connected to socket.io server !');
+     socket.emit('joinRoom',{
+        name: name,
+        room: room
+     });
+
  });
 
+
+//h1
+jQuery('.roomName').text(room);
 
  socket.on('message', function(message) {
      var momentTimestamp = moment.utc(message.timestamp);
      var $message = jQuery('.messages');
+
+
 
      console.log('New Message:');
      console.log(message.text);
