@@ -21,7 +21,8 @@ jQuery('.roomName').text(room);
 
  socket.on('message', function(message) {
      var momentTimestamp = moment.utc(message.timestamp);
-     var $message = jQuery('.messages');
+     var $messages = jQuery('.messages');
+     var $message = jQuery('<li class="list-group-item"></li>')
 
 
 
@@ -29,7 +30,8 @@ jQuery('.roomName').text(room);
      console.log(message.text);
 
      $message.append('<p><strong>' + message.name + ' ' + momentTimestamp.local().format('LT') + '</strong></p>')
-     $message.append('<p>' + message.text + '</p>')
+     $message.append('<p>' + message.text + '</p>');
+     $messages.append($message);
  });
 
 
